@@ -4,6 +4,8 @@ import Student from './Studetn';
 import CreateStudent from './CreateStudent';
 import React from 'react';
 import UpdateStudent from './UpdateStudent';
+import Login from './Login';
+import Signup from './Signup';
 
 
 function App() {
@@ -11,9 +13,11 @@ function App() {
     <div className="App">
       <BrowserRouter>      
         <Routes>
-          <Route path='/' element={<Student />}></Route>
+          <Route path='/home' element={<Student />}></Route>
           <Route path='/create' element={<CreateStudent />}></Route>
           <Route path='/update/:id' element={<UpdateStudent />}></Route>
+          <Route path='/' element={<Login />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -10,6 +10,15 @@ function Studetn() {
         .catch(err => console.log(err));
     }, [])
 
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete('http://localhost:8082/student/'+id)
+            window.location.reload()
+        }catch(err) {
+            console.log(err);
+        }
+    }
+
 return (
         <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
             <div className='w-50 bg-white rounded p-3'>
@@ -23,14 +32,13 @@ return (
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            student.map((data, i)=> (
+                        {student.map((data, i)=> (
                                 <tr key={i}>
-                                    <td>{data.Name}</td>
-                                    <td>{data.Email}</td>
+                                    <td>{data.name}</td>
+                                    <td>{data.email}</td>
                                     <td>
-                                        <Link to={`update/${data.ID}`} className='btn btn-primary'>Update</Link>
-                                        <button className='btn btn-danger'>Delete</button>
+                                        <Link to={`../update/${data.id}`} className='btn btn-primary'>Update</Link>
+                                        <button className='btn btn-danger ms-2' onClick={ e => handleDelete(data.id)}>Delete</button>
                                     </td>
                                 </tr>
                             ))
